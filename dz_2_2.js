@@ -70,40 +70,43 @@ console.log(addOrder(1, 5));
 
 
 function delOrder(id) {
-    for (let i=0; i<=basket.length; i++) {
+    for (let i=0; i<basket.length; i++) {
         if (id === basket[i].good) {
-            basket.slice(i,1);
+            console.log('Удален следующий заказ:');
+            console.log(basket[i]);
+            basket.splice(i,1);
+            
         }
-     }
-    return basket;
+    } return basket;
 }
 
-console.log(delOrder(2));
+console.log(delOrder(1));
 
-function delBasket () {
-    basket.slice(0, basket.length);
-    return basket;
-}
-
-console.log(delBasket());
 
 function totalBasket () {
     let totalAmount = 0
     let totalSumm = 0
-    for (let i=0; i<=basket.length; i++) {
+    for (let i=0; i<basket.length; i++) {
         totalAmount= totalAmount + basket[i].amount;
     }
-    return totalAmount;
-    for (let x=0; x<=goods.length; x++) {
-        for (let l=0; l<=basket.length; l++) {
+    for (let x=0; x<goods.length; x++) {
+        for (let l=0; l<basket.length; l++) {
             if (basket[l].good === goods[x].id) {
                 totalSumm = totalSumm + basket[l].amount * goods[x].price;
             }
         }
     }
-    return totalSum
     const total = {'totalAmount': totalAmount, 'totalSumm': totalSumm}
 return total
 }
 
 console.log(totalBasket());
+
+
+function delBasket () {
+    basket.splice(0, basket.length);
+    console.log('Корзина очищена');
+    return basket;
+}
+
+console.log(delBasket());
